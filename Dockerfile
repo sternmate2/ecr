@@ -1,9 +1,7 @@
 FROM ruby:2.5.5-alpine3.8
 
-# installing nginx full
-RUN apt-get install nginx-full && \ mkdir -p /srv/code 
 
-
+RUN mkdir -p /srv/code 
 WORKDIR /srv/code
 
 RUN apk add --update \
@@ -26,6 +24,8 @@ COPY . /srv/code
 # install default version of bundler
 RUN gem install bundler --version 2.0.1
 
+# installing nginx full
+RUN gem install nginx-full
 # install default version of passenger
 RUN gem install passenger --version 6.0.2
 
