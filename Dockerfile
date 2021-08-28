@@ -18,18 +18,14 @@ RUN apk add --update \
   pcre pcre-dev
   
 FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:443b6b5d44f32f4469170d7538d8011aaac1605c
-WORKDIR /srv/code
-COPY . /srv/code
+#WORKDIR /srv/code
+#COPY . /srv/code
 
 # install default version of bundler
-RUN gem install \
-bundler --version 2.0.1 \
-passenger --version 6.0.2 \
-passenger-config compile-agent --auto --optimize
-
+RUN gem install bundler --version 2.0.1
 # install default version of passenger
-#RUN gem install passenger --version 6.0.2
+RUN gem install passenger --version 6.0.2
 #RUN bundle install -j64
-#RUN passenger-config compile-agent --auto --optimize 
+RUN passenger-config compile-agent --auto --optimize 
  # passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1 && \
   #passenger-config build-native-support
