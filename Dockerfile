@@ -22,11 +22,11 @@ WORKDIR /srv/code
 COPY . /srv/code
 
 # install default version of bundler
-RUN gem install bundler --version 2.0.1
+RUN gem install bundler --version 2.0.1 && \ gem install passenger --version 6.0.2 && \ passenger-config compile-agent --auto --optimize 
 
 # install default version of passenger
-RUN gem install passenger --version 6.0.2
+#RUN gem install passenger --version 6.0.2
 #RUN bundle install -j64
-RUN passenger-config compile-agent --auto --optimize 
+#RUN passenger-config compile-agent --auto --optimize 
  # passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1 && \
   #passenger-config build-native-support
