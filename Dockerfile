@@ -1,9 +1,18 @@
-FROM node:10
+FROM ruby:2.5.5-alpine3.8
 
-# Create app directory
-WORKDIR /usr/src/app
-RUN npm install
+RUN mkdir -p /srv/code
 
-EXPOSE 8080
+WORKDIR /srv/code
 
-CMD [ "node", "app.js" ]
+RUN apk add --update \
+  curl curl-dev \
+  libxml2-dev \
+  build-base \
+  libxml2-dev \
+  libxslt-dev \
+  mysql-client \
+  mysql-dev \
+  tzdata \
+  nodejs \
+  linux-headers \
+  pcre pcre-dev
