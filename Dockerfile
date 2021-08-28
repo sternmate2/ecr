@@ -16,3 +16,14 @@ RUN apk add --update \
   nodejs \
   linux-headers \
   pcre pcre-dev
+  
+FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:8247cb3b3fd77c9ac1486d5b3ca01d30b7392ab6
+WORKDIR /srv/code
+COPY . /srv/code
+
+
+# install default version of bundler
+RUN gem install bundler --version 2.0.1
+
+# install default version of passenger
+RUN gem install passenger --version 6.0.2
