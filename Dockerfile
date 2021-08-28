@@ -1,23 +1,23 @@
-FROM ruby:2.5.5-alpine3.8
+#FROM ruby:2.5.5-alpine3.8
 
-RUN mkdir -p /srv/code
+#RUN mkdir -p /srv/code
 
-WORKDIR /srv/code
+#WORKDIR /srv/code
 
-RUN apk add --update \
-  curl curl-dev \
-  libxml2-dev \
-  build-base \
-  libxml2-dev \
-  libxslt-dev \
-  mysql-client \
-  mysql-dev \
-  tzdata \
-  nodejs \
-  linux-headers \
-  pcre pcre-dev
+#RUN apk add --update \
+ # curl curl-dev \
+  #libxml2-dev \
+  #build-base \
+  #libxml2-dev \
+  #libxslt-dev \
+  #mysql-client \
+  #mysql-dev \
+  #tzdata \
+  #nodejs \
+  #linux-headers \
+  #pcre pcre-dev
   
-FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:8247cb3b3fd77c9ac1486d5b3ca01d30b7392ab6
+FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:380da674192b9fc3115b4b26ae2d2f1e7211f66f
 WORKDIR /srv/code
 COPY . /srv/code
 
@@ -27,3 +27,8 @@ RUN gem install bundler --version 2.0.1
 
 # install default version of passenger
 RUN gem install passenger --version 6.0.2
+
+RUN bundle install -j64
+RUN passenger-config compile-agent --auto --optimize && \
+  passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1 && \
+  passenger-config build-native-support
