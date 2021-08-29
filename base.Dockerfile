@@ -1,7 +1,7 @@
 FROM ruby:2.5.5-alpine3.8
 
+RUN mkdir -p /srv/code
 
-RUN mkdir -p /srv/code 
 WORKDIR /srv/code
 
 RUN apk add --update \
