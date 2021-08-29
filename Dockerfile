@@ -17,7 +17,7 @@
 #  linux-headers \
 #  pcre pcre-dev
   
-FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:$IMAGE_TAG
+FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:0184b1c2e6cee4615e777e66155715b3ed32ab9f
 WORKDIR /srv/code
 COPY . /srv/code
 
