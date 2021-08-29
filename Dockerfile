@@ -17,7 +17,7 @@
 #  linux-headers \
 #  pcre pcre-dev
   
-FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:0184b1c2e6cee4615e777e66155715b3ed32ab9f
+FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:323f639d25fb7bb47533c820082fcc71917ef258
 WORKDIR /srv/code
 COPY . /srv/code
 
