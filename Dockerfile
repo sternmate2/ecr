@@ -3,7 +3,7 @@ WORKDIR /srv/code
 COPY . /srv/code
 
 # install default version of bundler
-RUN gem install bundler --version 2.0.1 --path=vendor/cache
+RUN gem install bundler --version 2.0.1 
 # install default version of passenger
 RUN gem install passenger --version 6.0.2 
 #RUN bundle install -j64
