@@ -1,12 +1,12 @@
 FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:4db41b53231fbdca6ee6799afc5563b144af5252
 WORKDIR /srv/code
-COPY . /srv/code
+#COPY . /srv/code
 
 # install default version of bundler
 RUN gem install bundler --version 2.0.1 
 # install default version of passenger
 RUN gem install passenger --version 6.0.2 
-RUN bundle install -j64
+RUN bundle install #-j64
 #RUN passenger-config compile-agent --auto && \
 #  passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1 && \
 #  passenger-config build-native-support
