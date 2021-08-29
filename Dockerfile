@@ -1,7 +1,7 @@
 FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest
 WORKDIR /srv/code
 COPY . /srv/code
-
+RUN bundle install -j64
 
 # install default version of bundler
 RUN gem install bundler --version 2.0.1
