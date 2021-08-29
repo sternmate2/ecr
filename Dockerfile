@@ -18,8 +18,8 @@ RUN apk add --update \
   pcre pcre-dev
 
 
-FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest
-WORKDIR /srv/code
+#FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest
+#WORKDIR /srv/code
 COPY . /srv/code
 # install default version of bundler
 RUN gem install bundler --version 2.0.1
