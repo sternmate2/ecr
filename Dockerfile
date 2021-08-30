@@ -1,4 +1,24 @@
-FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest
+FROM ruby:2.5.5-alpine3.8
+
+RUN mkdir -p /srv/code
+
+WORKDIR /srv/code
+
+RUN apk add --update \
+  curl curl-dev \
+  libxml2-dev \
+  build-base \
+  libxml2-dev \
+  libxslt-dev \
+  mysql-client \
+  mysql-dev \
+  tzdata \
+  nodejs \
+  linux-headers \
+  pcre pcre-dev
+
+
+#FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest
 #WORKDIR /srv/code
 #COPY . /srv/code
 # install default version of bundler
