@@ -16,3 +16,4 @@ RUN apk add --update \
   nodejs \
   linux-headers \
   pcre pcre-dev
+RUN passenger-config compile-agent --auto
