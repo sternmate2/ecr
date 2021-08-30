@@ -35,6 +35,6 @@ expose 9393
 
 RUN rm -rf /srv/code/public/assets 
 RUN ls -a
-RUN rake assets:precompile --trace
+RUN rake assets:precompile --task
 ENTRYPOINT bundle exec passenger start --port 3000 --log-level 3 --min-instances 5 --max-pool-size 5
 
