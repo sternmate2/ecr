@@ -5,10 +5,8 @@ WORKDIR /srv/code
 RUN gem install bundler --version 2.0.1
 
 # install default version of passenger
-RUN gem install passenger --version 6.0.2
-RUN bundle init
-RUN bundle install -j64
-#RUN passenger-config compile-agent --auto --optimize && \
+RUN gem install passenger --version 6.0.2 && bundle init && bundle install -j64
+RUN passenger-config compile-agent --auto && \
 #  passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1 && \
 #  passenger-config build-native-support
 
