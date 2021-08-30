@@ -16,4 +16,6 @@ RUN apk add --update \
   nodejs \
   linux-headers \
   pcre pcre-dev
-RUN passenger-config compile-agent --auto
+RUN gem install bundler --version 2.0.1 && gem install passenger --version 6.0.2 && bundle init && bundle install -j64 && passenger-config compile-agent --auto
+
+
