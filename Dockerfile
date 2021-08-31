@@ -1,4 +1,4 @@
-FROM ruby:2.5.5-alpine3.8 as build1
+FROM ruby:2.5.5-alpine3.8 
 
 RUN mkdir -p /srv/code
 
