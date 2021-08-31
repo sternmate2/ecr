@@ -5,8 +5,8 @@ ENV APP_HOME /srv/code
 WORKDIR $APP_HOME
 
 RUN gem install bundler --version 2.0.1
-#&& gem install passenger --version 6.0.2
-#&& bundle init && bundle install -j64 
+&& gem install passenger --version 6.0.2
+&& bundle init && bundle install -j64 
 
 
 #COPY Gemfile* $APP_HOME/
