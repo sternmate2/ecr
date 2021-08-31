@@ -1,9 +1,9 @@
 FROM ruby:2.5.5-alpine3.8 
+ENV APP_HOME /srv/code
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
 
-RUN mkdir -p /srv/code
-
-WORKDIR /srv/code
-
+#COPY Gemfile* $APP_HOME/
 RUN apk add --update \
   curl curl-dev \
   libxml2-dev \
