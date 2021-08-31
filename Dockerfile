@@ -15,7 +15,8 @@ RUN apk add --update \
   tzdata \
   nodejs \
   linux-headers \
-  pcre pcre-dev
+  pcre pcre-dev && rm -rf /var/cache/apk/*
+
 
 
 
