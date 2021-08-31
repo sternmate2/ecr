@@ -2,7 +2,7 @@ FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:d7a7242509ce6e4710f1eba18
 expose 9393
 WORKDIR /srv/code
 # install default version of bundler
-RUN chmod +x ./srv/code
+RUN chmod +x /srv/code
 RUN gem install bundler --version 2.0.1 && gem install passenger --version 6.0.2 && bundle init && bundle install -j64 
 
 #FROM  as build2
