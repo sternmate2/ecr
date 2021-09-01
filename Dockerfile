@@ -19,7 +19,7 @@ RUN gem install passenger --version 6.0.2
 FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest as build3 
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
-COPY --from=build2 /srv/code  
+copy --from=build1 /usr/local/bundle/ $APP_HOME  
 WORKDIR $APP_HOME
 RUN passenger-config compile-agent --auto && \
 
