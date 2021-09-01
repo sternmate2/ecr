@@ -9,6 +9,8 @@ RUN chmod -R 755 /usr/local/bundle/
 
 # && gem install passenger --version 6.0.2 \
 # && bundle install -j64 
+
+FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest 
 copy --from=build1 /usr/local/bundle/ $APP_HOME
 RUN ls -a $APP_HOME
 #FROM  as build2
