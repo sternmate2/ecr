@@ -9,11 +9,12 @@ RUN gem install bundler --version 2.0.1
 FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest 
 
 ENV APP_HOME /srv/code
-RUN mkdir -p $APP_HOME && chmod -R 755 /usr/local/bundle/ 
+RUN mkdir -p $APP_HOME
+RUN chmod -R 755 /usr/local/bundle/ && chmod -R 755 $APP_HOME
 copy --from=build1 /usr/local/bundle/ $APP_HOME     
 RUN gem install passenger --version 6.0.2
 WORKDIR $APP_HOME
-RUN pwd
+RUN ls -a $APP_HOME
 #RUN bundle install -j64 
 
 
