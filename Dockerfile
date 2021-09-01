@@ -21,7 +21,7 @@ ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
 copy --from=build1 /usr/local/bundle/ $APP_HOME  
 WORKDIR $APP_HOME
-RUN passenger-config compile-agent --auto && \
+RUN passenger-config compile-agent --auto 
 
 # install default version of passenger
 
