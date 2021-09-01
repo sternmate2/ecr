@@ -5,11 +5,11 @@ ENV APP_HOME /srv/code
 WORKDIR $APP_HOME
 RUN gem install bundler --version 2.0.1 
 RUN ls -a /usr/local/bundle/ #$APP_HOME
-#RUN chmod -R 755 /usr/local/bundle/
+RUN chmod -R 755 /usr/local/bundle/
 
 # && gem install passenger --version 6.0.2 \
 # && bundle install -j64 
-#ADD /usr/local/bundle/gems $APP_HOME
+ADD /usr/local/bundle/* $APP_HOME
 
 #FROM  as build2
 #WORKDIR /srv/code
