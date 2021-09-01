@@ -2,12 +2,14 @@ FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest as build1
 #EXPOSE 9393
 # install default version of bundler
 ENV APP_HOME /srv/code
+RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 RUN gem install bundler --version 2.0.1 
 
 FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest 
-RUN chmod -R 755 /usr/local/bundle/ 
+
 ENV APP_HOME /srv/code
+RUN mkdir -p $APP_HOME && chmod -R 755 /usr/local/bundle/ 
 WORKDIR $APP_HOME
 copy --from=build1 /usr/local/bundle/ $APP_HOME     
 RUN gem install passenger --version 6.0.2
