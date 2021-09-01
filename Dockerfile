@@ -4,13 +4,13 @@ FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest as build1
 ENV APP_HOME /srv/code
 WORKDIR $APP_HOME
 RUN gem install bundler --version 2.0.1 
-RUN ls -a /usr/local/bundle/gems #$APP_HOME
+
 #RUN chmod -R 755 /usr/local/bundle/
 
 # && gem install passenger --version 6.0.2 \
 # && bundle install -j64 
-#copy /usr/local/bundle/* $APP_HOME
-
+copy --from=build1 /usr/local/bundle/ $APP_HOME
+RUN ls -a $APP_HOME
 #FROM  as build2
 #WORKDIR /srv/code
 #COPY --from=build1 /srv/code  
