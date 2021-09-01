@@ -10,7 +10,8 @@ RUN chmod -R 755 /usr/local/bundle/
 ENV APP_HOME /srv/code
 WORKDIR $APP_HOME
 copy --from=build1 /usr/local/bundle/ $APP_HOME     
-RUN gem install passenger --version 6.0.2 && bundle install -j64 
+RUN gem install passenger --version 6.0.2
+RUN bundle install -j64 
 
 
 
