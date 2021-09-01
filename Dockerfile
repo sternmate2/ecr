@@ -10,9 +10,9 @@ FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest
 
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME && chmod -R 755 /usr/local/bundle/ 
-WORKDIR $APP_HOME
 copy --from=build1 /usr/local/bundle/ $APP_HOME     
 RUN gem install passenger --version 6.0.2
+WORKDIR $APP_HOME
 RUN bundle install -j64 
 
 
