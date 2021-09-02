@@ -26,7 +26,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: base
-        IMAGE_TAG: Latest #${{ github.sha }}
+        IMAGE_TAG: latest #${{ github.sha }}
       run: |
         
         docker build . --file base.Dockerfile --tag $IMAGE_TAG
@@ -36,7 +36,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: base
-        IMAGE_TAG: Latest #${{ github.sha }}
+        IMAGE_TAG: latest #${{ github.sha }}
       run: |
         
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
