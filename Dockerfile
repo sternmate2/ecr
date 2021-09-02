@@ -4,17 +4,16 @@ FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:b1dc1f8fbf016af761596995c
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
-RUN gem install bundler --version 2.0.1 && gem install passenger --version 6.0.2
+RUN gem install bundler --version 2.0.1 && gem install passenger --version 6.0.2 && bundle install -j64 
 
-#FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest as build2
-
-#ENV APP_HOME /srv/code
-#RUN mkdir -p $APP_HOME
+FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest as build2
+ENV APP_HOME /srv/code
+RUN mkdir -p $APP_HOME
 #RUN chmod -R 755 /usr/local/bundle/ && chmod -R 755 $APP_HOME
 #copy --from=build1 /usr/local/bundle/ $APP_HOME     
-#WORKDIR $APP_HOME
+WORKDIR $APP_HOME
 #RUN gem install passenger --version 6.0.2
-#RUN bundle install -j64 
+
 
 #FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest as build3 
 #ENV APP_HOME /srv/code
