@@ -24,7 +24,7 @@ WORKDIR $APP_HOME
 #RUN mkdir -p $APP_HOME
 #copy --from=build1 /usr/local/bundle/ $APP_HOME  
 #WORKDIR $APP_HOME
-RUN passenger-config compile-agent --auto 
+RUN passenger-config compile-agent --auto --optimize
 
 # install default version of passenger
 
