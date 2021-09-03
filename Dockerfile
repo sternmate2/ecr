@@ -10,7 +10,7 @@ RUN gem install bundler --version 2.0.1 && gem install passenger --version 6.0.2
 #run gem which bundle
 #run ls -a /root/.gem/ruby/#2.5.0
 #run ls -a /usr/local/lib/ruby/gems/
-FROM build1 as build2
+FROM scratch as build2
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
 #RUN chmod -R 755 /usr/local/bundle/ && chmod -R 755 $APP_HOME
