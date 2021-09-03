@@ -4,7 +4,9 @@ FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:ec8e4db6469234c6afe33c535
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
-RUN gem install bundler --version 2.0.1 && gem install passenger --version 6.0.2 # && bundle install -j64 
+RUN gem install bundler --version 2.0.1 
+RUN gem install passenger --version 6.0.2 # 
+RUN bundle install -j64 
 #run gem environment
 #run gem which bundle
 #run ls -a /root/.gem/ruby/#2.5.0
