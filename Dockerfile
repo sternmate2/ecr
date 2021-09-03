@@ -3,6 +3,7 @@ FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:ec8e4db6469234c6afe33c535
 # install default version of bundler
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
+ADD . /$APP_HOME/
 WORKDIR $APP_HOME
 RUN gem install bundler --version 2.0.1 
 RUN gem install passenger --version 6.0.2 # 
