@@ -5,13 +5,13 @@ ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 RUN gem install bundler --version 2.0.1 && gem install passenger --version 6.0.2 # && bundle install -j64 
-run gem environment
-run gem which bundle
+#run gem environment
+#run gem which bundle
 #run ls -a /root/.gem/ruby/#2.5.0
 #run ls -a /usr/local/lib/ruby/gems/
-#FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest as build2
-#ENV APP_HOME /srv/code
-#RUN mkdir -p $APP_HOME
+FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:ec8e4db6469234c6afe33c5353a597b10d95d65d as build2
+ENV APP_HOME /srv/code
+RUN mkdir -p $APP_HOME
 #RUN chmod -R 755 /usr/local/bundle/ && chmod -R 755 $APP_HOME
 #copy --from=build1 /usr/local/bundle/ $APP_HOME     
 #WORKDIR $APP_HOME
@@ -21,9 +21,9 @@ run gem which bundle
 #FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest as build3 
 #ENV APP_HOME /srv/code
 #RUN mkdir -p $APP_HOME
-#copy --from=build1 /usr/local/bundle/ $APP_HOME  
+copy --from=build1 /usr/local/bundle/ $APP_HOME  
 #WORKDIR $APP_HOME
-#RUN passenger-config compile-agent --auto 
+RUN passenger-config compile-agent --auto 
 
 # install default version of passenger
 
