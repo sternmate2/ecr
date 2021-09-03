@@ -1,4 +1,4 @@
-FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:b1dc1f8fbf016af761596995c62d47d8db1abd69 as build1
+FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:f2f26d642802b31193170494b4d1d599bc220904ade7dd43705da55647cc53c165 as build1
 #EXPOSE 9393
 # install default version of bundler
 ENV APP_HOME /srv/code
