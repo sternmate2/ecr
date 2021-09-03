@@ -5,9 +5,7 @@ ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
 ADD . /$APP_HOME/
 WORKDIR $APP_HOME
-RUN gem install bundler --version 2.0.1 
-RUN gem install passenger --version 6.0.2 # 
-RUN bundle install -j64 
+RUN gem install bundler --version 2.0.1 && gem install passenger --version 6.0.2 && bundle init && bundle install -j64 
 #run gem environment
 #run gem which bundle
 #run ls -a /root/.gem/ruby/#2.5.0
