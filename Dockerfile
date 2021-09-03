@@ -16,7 +16,7 @@ RUN mkdir -p $APP_HOME
 #RUN chmod -R 755 /usr/local/bundle/ && chmod -R 755 $APP_HOME
 COPY --from=build1 /usr/local/bundle/ $APP_HOME     
 WORKDIR $APP_HOME
-RUN gem install passenger --version 6.0.2
+#RUN gem install passenger --version 6.0.2
 
 
 #FROM 345668227719.dkr.ecr.us-east-1.amazonaws.com/base:Latest as build3 
@@ -24,7 +24,7 @@ RUN gem install passenger --version 6.0.2
 #RUN mkdir -p $APP_HOME
 #copy --from=build1 /usr/local/bundle/ $APP_HOME  
 #WORKDIR $APP_HOME
-#RUN passenger-config compile-agent --auto 
+RUN passenger-config compile-agent --auto 
 
 # install default version of passenger
 
