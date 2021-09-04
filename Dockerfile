@@ -5,7 +5,7 @@ RUN mkdir -p $APP_HOME
 ADD . /$APP_HOME/
 WORKDIR $APP_HOME
 RUN gem install bundler --version 2.0.1  && gem install passenger --version 6.0.2 && bundle init \
-&& bundle install -j64 --deployment --without development test 
+&& bundle install -j64  
 
 FROM build1 as build2
 ENV APP_HOME /srv/code
@@ -22,7 +22,7 @@ RUN mkdir -p $APP_HOME
 COPY --from=build2 $APP_HOME/ $APP_HOME  
 WORKDIR $APP_HOME
 #ENV NODE_ENV=production
-RUN passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1
+#RUN passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1
 #    passenger-config build-native-support
 
 
