@@ -12,14 +12,16 @@ RUN mkdir -p $APP_HOME
 #RUN chmod -R 755 /usr/local/bundle/ && chmod -R 755 $APP_HOME
 COPY --from=build1 /usr/local/bundle/ $APP_HOME     
 WORKDIR $APP_HOME
-RUN passenger-config compile-agent --auto
+ENV NODE_ENV=production
+RUN passenger-config compile-agent --auto --production
 
-FROM build1 as build3 
+FROM build2 as build3 
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
 COPY --from=build2 $APP_HOME/ $APP_HOME  
 WORKDIR $APP_HOME
-RUN passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1
+ENV NODE_ENV=production
+RUN passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1 --production
 #    passenger-config build-native-support
 
 
