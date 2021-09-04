@@ -12,15 +12,15 @@ RUN gem install passenger --version 6.0.2
 #RUN mkdir -p $APP_HOME
 #RUN chmod -R 755 /usr/local/bundle/ && chmod -R 755 $APP_HOME
 #COPY --from=build1 /usr/local/bundle/ $APP_HOME     
-WORKDIR $APP_HOME
+#WORKDIR $APP_HOME
 #ENV NODE_ENV=production
 RUN passenger-config compile-agent --auto 
 
-FROM build2 as build3 
-ENV APP_HOME /srv/code
-RUN mkdir -p $APP_HOME
-COPY --from=build2 $APP_HOME/ $APP_HOME  
-WORKDIR $APP_HOME
+#FROM build2 as build3 
+#ENV APP_HOME /srv/code
+#RUN mkdir -p $APP_HOME
+#COPY --from=build2 $APP_HOME/ $APP_HOME  
+#WORKDIR $APP_HOME
 #ENV NODE_ENV=production
 #RUN passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1
 #    passenger-config build-native-support
