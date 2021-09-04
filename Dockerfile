@@ -6,7 +6,7 @@ ADD . /$APP_HOME/
 WORKDIR $APP_HOME
 RUN gem install bundler --version 2.0.1 && gem install passenger --version 6.0.2 && bundle init && bundle install -j64 
 
-FROM build1 as build2
+FROM build1 
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
 #RUN chmod -R 755 /usr/local/bundle/ && chmod -R 755 $APP_HOME
@@ -14,10 +14,10 @@ COPY --from=build1 /usr/local/bundle/ $APP_HOME
 WORKDIR $APP_HOME
 RUN passenger-config compile-agent --auto
 
-FROM build1 as build3 
+FROM build1 
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
-COPY --from=build1 $APP_HOME $APP_HOME  
+COPY --from=build1 usr/local/bundle/ $APP_HOME  
 #WORKDIR $APP_HOME
 RUN passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1
 #    passenger-config build-native-support
