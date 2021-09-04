@@ -14,10 +14,10 @@ COPY --from=build1 /usr/local/bundle/ $APP_HOME
 WORKDIR $APP_HOME
 RUN passenger-config compile-agent --auto
 
-FROM build2 as build3 
+FROM build1 as build3 
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
-COPY --from=build2 $APP_HOME $APP_HOME  
+COPY --from=build1 $APP_HOME $APP_HOME  
 #WORKDIR $APP_HOME
 RUN passenger-config install-standalone-runtime --auto --url-root=fake --connect-timeout=1
 #    passenger-config build-native-support
@@ -25,11 +25,11 @@ RUN passenger-config install-standalone-runtime --auto --url-root=fake --connect
 
 # install default version of passenger
 
-FROM build3 as build4
+FROM build as build4
 EXPOSE 9393
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
-COPY --from=build3 $APP_HOME $APP_HOME  
+COPY --from=build1 $APP_HOME $APP_HOME  
 WORKDIR $APP_HOME 
 RUN passenger-config build-native-support
 COPY ./Rakefile $APP_HOME
