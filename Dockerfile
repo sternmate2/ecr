@@ -16,7 +16,7 @@ RUN gem install passenger --version 6.0.2
 #ENV NODE_ENV=production
 RUN export CC='ccache clang -fcolor-diagnostics -Qunused-arguments -fcatch-undefined-behavior -ftrapv'
 RUN export CXX='ccache clang++ -fcolor-diagnostics -Qunused-arguments -fcatch-undefined-behavior -ftrapv'
-RUN passenger-config --verbose compile-agent --auto 
+RUN passenger-config compile-agent --auto 
 
 #FROM build2 as build3 
 #ENV APP_HOME /srv/code
