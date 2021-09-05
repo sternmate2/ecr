@@ -1,4 +1,5 @@
-FROM scratch #345668227719.dkr.ecr.us-east-1.amazonaws.com/base:38e0487f1fcd61f502a0b1418b9b05e39be51dd6 as build1
+FROM scratch 
+#345668227719.dkr.ecr.us-east-1.amazonaws.com/base:38e0487f1fcd61f502a0b1418b9b05e39be51dd6
 # install default version of bundler
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
