@@ -14,7 +14,7 @@ RUN gem install passenger --version 6.0.2
 #COPY --from=build1 /usr/local/bundle/ $APP_HOME     
 #WORKDIR $APP_HOME
 #ENV NODE_ENV=production
-RUN passenger-config compile-agent --auto 
+RUN passenger-config compile-agent --auto --verbose
 
 #FROM build2 as build3 
 #ENV APP_HOME /srv/code
