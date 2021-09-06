@@ -1,9 +1,8 @@
-FROM ruby:2.5.5-alpine3.8 
+FROM ruby:2.5.5-alpine3.8 as builder
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
-#COPY Gemfile* $APP_HOME/
 RUN apk add --update \
   curl curl-dev \
   libxml2-dev \
@@ -16,6 +15,7 @@ RUN apk add --update \
   nodejs \
   linux-headers \
   pcre pcre-dev 
+RUN gem install passenger --version 6.0.8
 
 
 
