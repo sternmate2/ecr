@@ -20,9 +20,9 @@ RUN gem install passenger --version 6.0.8
 FROM builder
 ENV APP_HOME /srv/code
 RUN mkdir -p $APP_HOME
-COPY 
+COPY --from=builder $APP_HOME $APP_HOME
 WORKDIR $APP_HOME
-RUN passenger-config compile-agent --
+RUN passenger-config compile-agent --auto --optimize
 
 
 
